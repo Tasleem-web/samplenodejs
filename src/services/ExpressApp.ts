@@ -10,7 +10,7 @@ export default async (app: Application) => {
     app.use(express.static(path.join(__dirname, 'uploads')));
 
     app.get('/ping', (req: Request, res: Response) => {
-        return res.send('ping pong')
+        return res.send('ping pong test');
     })
 
     app.use('/admin', AdminRoute);
