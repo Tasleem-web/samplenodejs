@@ -1,16 +1,17 @@
-import express, { Request, Response } from 'express'
+import express from 'express';
+import App from './services/ExpressApp';
+import dbConnection from './services/Database';
+import { PORT } from './config';
 
-const app = express()
-const port = process.env.PORT || 8080
+const startServer = async () => {
+    const app = express();
 
-app.get('/', (_req: Request, res: Response) => {
-    return res.send('Express Typescript on Vercel')
-})
+    await dbConnection();
+    await App(app);
 
-app.get('/ping', (_req: Request, res: Response) => {
-    return res.send('pong 🏓')
-})
+    app.listen(PORT, () => {
+        console.log(`Listening to port ${PORT}`);
+    })
+}
 
-app.listen(port, () => {
-    return console.log(`Server is listening on ${port}`)
-})
+startServer();

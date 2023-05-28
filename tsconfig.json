@@ -9,6 +9,11 @@
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
+    "lib": ["DOM", "ES6", "ESNext.AsyncIterable"],
+    "rootDir": "./src",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
     }
